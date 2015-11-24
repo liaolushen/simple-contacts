@@ -75,9 +75,9 @@ curl http://localhost:8080/get-contact-by-name?name=Mike
 
 ```json
 {
-    "type": "success"
+    "type": "success",
     "data": {
-        "name": "Mike"
+        "name": "Mike",
         "phoneNumber": "123456"
     }
 }
@@ -99,9 +99,9 @@ curl http://localhost:8080/get-contact-by-phone-number?phoneNumber=123456
 
 ```json
 {
-    "type": "success"
+    "type": "success",
     "data": {
-        "name": "Mike"
+        "name": "Mike",
         "phoneNumber": "123456"
     }
 }
