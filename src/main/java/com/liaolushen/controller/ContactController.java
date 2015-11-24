@@ -14,7 +14,7 @@ import javax.validation.Valid;
  * @author liaolushen
  */
 @RestController
-@RequestMapping(produces = "application/json")
+@RequestMapping(produces = "application/json; charset=utf-8")
 public class ContactController {
     private final ContactService contactService;
 
@@ -24,22 +24,22 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public StringResponse addContact(@RequestBody @Valid final Contact contact) {
+    public @ResponseBody StringResponse addContact(@RequestBody @Valid final Contact contact) {
         return contactService.save(contact);
     }
 
     @RequestMapping(value = "/get-all-contacts", method = RequestMethod.GET)
-    public StringResponse getAllContact() {
+    public @ResponseBody StringResponse getAllContacts() {
         return contactService.getAllContacts();
     }
 
     @RequestMapping(value = "/get-contact-by-name", method = RequestMethod.GET, params = {"name"})
-    public StringResponse getContactByName(@RequestParam("name") String name) {
+    public @ResponseBody StringResponse getContactByName(@RequestParam(value="name") String name) {
         return contactService.getContactByName(name);
     }
 
-    @RequestMapping(value = "/get-contact-by-name", method = RequestMethod.GET, params = {"phoneNumber"})
-    public StringResponse getContactByPhoneNumber(@RequestParam("phoneNumber") String phoneNumber) {
+    @RequestMapping(value = "/get-contact-by-phone-number", method = RequestMethod.GET, params = {"phoneNumber"})
+    public @ResponseBody StringResponse getContactByPhoneNumber(@RequestParam(value="phoneNumber") String phoneNumber) {
         return contactService.getContactByPhoneNumber(phoneNumber);
     }
 }
